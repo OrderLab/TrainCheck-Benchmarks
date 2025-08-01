@@ -214,11 +214,11 @@ def main():
             else:
                 print(f"Check failed for {trace_dir}")
                 all_passed = False
-                # sys.exit(1)
+                sys.exit(1)
         except Exception as e:
             print(f"Error processing {trace_dir}: {e}")
             all_passed = False
-            # sys.exit(1)
+            sys.exit(1)
 
     # # online simulated check
     for trace_dir in simulate_trace_dirs:
@@ -230,11 +230,11 @@ def main():
             else:
                 print(f"Check failed for {trace_dir}")
                 all_passed = False
-                # sys.exit(1)
+                sys.exit(1)
         except Exception as e:
             print(f"Error processing {trace_dir}: {e}")
             all_passed = False
-            # sys.exit(1)
+            sys.exit(1)
 
     # offline static check
     for trace_dir in static_trace_dirs:
@@ -248,11 +248,11 @@ def main():
             else:
                 print(f"Offline check failed for {trace_dir}")
                 all_passed = False
-                # sys.exit(1)
+                sys.exit(1)
         except Exception as e:
             print(f"Error processing {trace_dir}: {e}")
             all_passed = False
-            # sys.exit(1)
+            sys.exit(1)
 
     if all_passed:
         print("All checks passed!")
