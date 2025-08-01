@@ -215,6 +215,19 @@ def main():
                 print(f"Check failed for {trace_dir}")
                 all_passed = False
                 sys.exit(1)
+                command = ["traincheck-onlinecheck", "-d", "-f", str(trace), "-i", str(invariant)]
+                process = subprocess.Popen(
+                    command, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
+                )
+
+                try:
+                    time.sleep(20)
+                    process.terminate()
+                    process.wait(timeout=5)
+                except subprocess.TimeoutExpired:
+                    print(f"Force killing unresponsive process for {trace}")
+                    process.kill()
+                    process.wait()
         except Exception as e:
             print(f"Error processing {trace_dir}: {e}")
             all_passed = False
