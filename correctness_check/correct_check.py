@@ -204,8 +204,6 @@ def main():
 
     # # online static check
     for trace_dir in static_trace_dirs:
-        if "104336" in str(trace_dir):
-            continue
         try:
             trace, ref_log, invariant = find_trace_components(trace_dir)
             out_log = run_online_checker(trace, invariant)
