@@ -4,6 +4,6 @@ modules_to_instr:
 - transformers
 pyscript: main.py
 shscript: run.sh
-model_tracker_style: proxy
+model_tracker_style: subclass
 models_to_track:
 - model

@@ -3,6 +3,6 @@ modules_to_instr:
 - accelerate
 - transformers
 pyscript: main.py
-model_tracker_style: proxy
+model_tracker_style: subclass
 models_to_track:
 - model

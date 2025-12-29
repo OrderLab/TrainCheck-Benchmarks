@@ -5,5 +5,5 @@ modules_to_instr:
 models_to_track:
   - netD
   - netG
-model_tracker_style: proxy
+model_tracker_style: subclass
 

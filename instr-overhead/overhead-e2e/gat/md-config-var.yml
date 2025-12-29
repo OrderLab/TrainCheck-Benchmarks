@@ -1,4 +1,4 @@
-model_tracker_style: proxy
+model_tracker_style: subclass
 models_to_track:
 - gat_net
 modules_to_instr:
