@@ -11,9 +11,7 @@ import torch.nn.functional as F
 from torch import nn
 from torch.optim import Adam
 from traincheck import annotate_stage
-from traincheck.instrumentor import meta_vars
 
-meta_vars["step"] = 0
 annotate_stage("init")
 
 MD_BATCH_FILE_NAME = "iteration_times.txt"
