@@ -29,11 +29,11 @@ E2E_FOLDER = "overhead-e2e"
 rm -rf @(RES_FOLDER)
 mkdir @(RES_FOLDER)
 
-# run microbenchmark
-cd @(MICRO_FOLDER)
-bash collect_wrapper_overhead.sh
-cd ..
-mv @(MICRO_FOLDER)/wrapper_overhead_micro.csv @(RES_FOLDER)/
+# # run microbenchmark
+# cd @(MICRO_FOLDER)
+# bash collect_wrapper_overhead.sh
+# cd ..
+# mv @(MICRO_FOLDER)/wrapper_overhead_micro.csv @(RES_FOLDER)/
 
 def get_all_GPU_pids():
     pids = $(nvidia-smi | grep 'python' | awk '{ print $5 }').split()
@@ -151,7 +151,7 @@ print(f"{len(workloads)} workloads to run: ", workloads)
 for w in workloads:
     if "ac_bert" in w:
         run_exp(kill_sec=200, workload=w, use_proxy=args.track_variables)
-    elif "tf_summarization" in w:
+    elif "tf_sum" in w:
         run_exp(kill_sec=400, workload=w, use_proxy=args.track_variables)
     else:
         run_exp(kill_sec=60, workload=w, use_proxy=args.track_variables)
