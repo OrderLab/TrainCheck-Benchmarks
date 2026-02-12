@@ -266,8 +266,6 @@ def test(model, device, test_loader):
                 outputs > 0.5, 1, 0
             )  # get the index of the max log-probability
             correct += pred.eq(targets.view_as(pred)).sum().item()
-            if batch_idx == 10:
-                break
     test_loss /= len(test_loader.dataset)
 
     # for the 1st epoch, the average loss is 0.0001 and the accuracy 97-98%
@@ -375,12 +373,8 @@ def main():
         train_kwargs.update(cuda_kwargs)
         test_kwargs.update(cuda_kwargs)
 
-    train_dataset = torch.utils.data.Subset(
-        APP_MATCHER("../data", train=True, download=True), range(5 * args.batch_size)
-    )
-    test_dataset = torch.utils.data.Subset(
-        APP_MATCHER("../data", train=False), range(5 * args.batch_size)
-    )
+    train_dataset = APP_MATCHER("../data", train=True, download=True)
+    test_dataset = APP_MATCHER("../data", train=False)
     train_loader = torch.utils.data.DataLoader(train_dataset, **train_kwargs)
     test_loader = torch.utils.data.DataLoader(test_dataset, **test_kwargs)
 
