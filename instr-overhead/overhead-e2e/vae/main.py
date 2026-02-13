@@ -64,21 +64,15 @@ else:
 
 kwargs = {"num_workers": 0, "pin_memory": True} if args.cuda else {}
 train_loader = torch.utils.data.DataLoader(
-    torch.utils.data.Subset(
-        datasets.MNIST(
-            "../data", train=True, download=True, transform=transforms.ToTensor()
-        ),
-        range(5 * args.batch_size),
+    datasets.MNIST(
+        "../data", train=True, download=True, transform=transforms.ToTensor()
     ),
     batch_size=args.batch_size,
     shuffle=True,
     **kwargs
 )
 test_loader = torch.utils.data.DataLoader(
-    torch.utils.data.Subset(
-        datasets.MNIST("../data", train=False, transform=transforms.ToTensor()),
-        range(5 * args.batch_size),
-    ),
+    datasets.MNIST("../data", train=False, transform=transforms.ToTensor()),
     batch_size=args.batch_size,
     shuffle=False,
     **kwargs
